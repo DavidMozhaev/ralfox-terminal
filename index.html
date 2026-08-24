@@ -3,15 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Rally FOX ($RALF)</title>
+
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <div class="bg-layer"></div>
@@ -21,134 +27,367 @@
 <!-- PARTICLES -->
 <div class="particles" id="particles"></div>
 
+
 <!-- NAV -->
 <header class="site-nav">
+
   <a href="#hero" class="nav-logo">
     <img src="assets/favicon-64.png" alt="" class="nav-logo-icon">
     RALLY <span>FOX</span>
   </a>
+
   <nav class="nav-links">
     <a href="#about">The Fox</a>
     <a href="#gallery">The Hunt</a>
     <a href="#signal">Ral's Notes</a>
     <a href="#token">Token</a>
   </nav>
+
   <a href="#token" class="nav-cta">Buy $RALF</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
+
+  <button
+    class="nav-toggle"
+    id="navToggle"
+    aria-label="Toggle menu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
+
 </header>
+
 
 <!-- HERO -->
 <section id="hero" class="hero">
+
   <div class="hero-content">
+
     <div class="text-panel hero-panel">
-      <p class="hero-eyebrow">Now racing on-chain</p>
-      <h1 class="hero-title">RALLY <span class="accent">FOX</span></h1>
-      <p class="hero-ticker">$RALF</p>
-      <p class="hero-tagline">Attention is taken, not requested.</p>
+
+      <p class="hero-eyebrow">
+        Now racing on-chain
+      </p>
+
+      <h1 class="hero-title">
+        RALLY <span class="accent">FOX</span>
+      </h1>
+
+      <p class="hero-ticker">
+        $RALF
+      </p>
+
+      <p class="hero-tagline">
+        Attention is taken, not requested.
+      </p>
+
     </div>
+
     <div class="hero-actions">
-      <a href="#token" class="btn btn-primary">Buy $RALF</a>
-      <a href="#about" class="btn btn-ghost">Learn more</a>
+
+      <a href="#token" class="btn btn-primary">
+        Buy $RALF
+      </a>
+
+      <a href="#about" class="btn btn-ghost">
+        Learn more
+      </a>
+
     </div>
+
   </div>
+
 </section>
+
 
 <!-- ABOUT -->
 <section id="about" class="section about reveal">
+
   <div class="text-panel">
-    <h2 class="section-title"><span class="tag">01</span> The <span class="accent">Fox</span></h2>
+
+    <h2 class="section-title">
+      <span class="tag">01</span>
+      The <span class="accent">Fox</span>
+    </h2>
+
     <div class="about-body">
-      <p>$RALF is the official mark of Ral — Rally Fox.</p>
-      <p>Born inside the Rally factory to give the marketpad a face that doesn't beg.</p>
-      <p>He watches the floor, tracks what actually holds attention, and shows up only when it matters.</p>
-      <p>In a space full of noise, Ral stays quiet, precise, and present. That is the identity.</p>
+
+      <p>
+        $RALF is the official mark of Ral — Rally Fox.
+      </p>
+
+      <p>
+        Born inside the Rally factory to give the marketpad a face that doesn't beg.
+      </p>
+
+      <p>
+        He watches the floor, tracks what actually holds attention, and shows up only when it matters.
+      </p>
+
+      <p>
+        In a space full of noise, Ral stays quiet, precise, and present. That is the identity.
+      </p>
+
     </div>
+
   </div>
+
 </section>
+
 
 <!-- GALLERY -->
 <section id="gallery" class="section gallery reveal">
-  <h2 class="section-title"><span class="tag">02</span> The <span class="accent">Hunt</span></h2>
-  <p class="section-sub">Frames from the hunt.</p>
-  <div class="gallery-grid" id="galleryGrid">
-    <!-- gallery items injected by script.js -->
+
+  <h2 class="section-title">
+    <span class="tag">02</span>
+    The <span class="accent">Hunt</span>
+  </h2>
+
+  <p class="section-sub">
+    Frames from the hunt.
+  </p>
+
+  <div class="gallery-carousel">
+
+    <button
+      class="gallery-arrow gallery-prev"
+      id="galleryPrev"
+      aria-label="Previous images"
+    >
+      &#8249;
+    </button>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Gallery injected by script.js -->
+    </div>
+
+    <button
+      class="gallery-arrow gallery-next"
+      id="galleryNext"
+      aria-label="Next images"
+    >
+      &#8250;
+    </button>
+
   </div>
+
 </section>
+
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-  <div class="lightbox-frame" id="lightboxFrame"></div>
+
+  <button
+    class="lightbox-close"
+    id="lightboxClose"
+    aria-label="Close"
+  >
+    &times;
+  </button>
+
+  <div
+    class="lightbox-frame"
+    id="lightboxFrame"
+  ></div>
+
 </div>
+
 
 <!-- SIGNAL -->
 <section id="signal" class="section signal reveal">
+
   <div class="text-panel">
-    <h2 class="section-title"><span class="tag">03</span> Ral's <span class="accent">Notes</span></h2>
-    <p class="section-sub">Daily observations, quiet hints, and updates worth reading.</p>
+
+    <h2 class="section-title">
+      <span class="tag">03</span>
+      Ral's <span class="accent">Notes</span>
+    </h2>
+
+    <p class="section-sub">
+      Daily observations, quiet hints, and updates worth reading.
+    </p>
 
     <ul class="signal-list">
+
       <li class="signal-item">
-        <span class="signal-date">AUG 24 · 12:43 PM ET</span>
-        <span class="signal-text">Site is live. The hunt has begun.</span>
+
+        <span class="signal-date">
+          AUG 24 · 12:43 PM ET
+        </span>
+
+        <span class="signal-text">
+          Site is live. The hunt has begun.
+        </span>
+
       </li>
+
     </ul>
+
   </div>
+
 </section>
+
 
 <!-- TOKEN + LINKS -->
 <section id="token" class="section token reveal">
-  <h2 class="section-title"><span class="tag">04</span> Token &amp; <span class="accent">Links</span></h2>
+
+  <h2 class="section-title">
+    <span class="tag">04</span>
+    Token &amp; <span class="accent">Links</span>
+  </h2>
+
   <div class="card-grid">
 
-    <a class="link-card" href="https://x.com/theralfox" target="_blank" rel="noopener noreferrer">
+
+    <!-- X -->
+    <a
+      class="link-card"
+      href="https://x.com/theralfox"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
       <div class="link-card-top">
+
         <span class="link-card-id">
-          <span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></span>
-          <span class="link-card-label">X</span>
+
+          <span class="link-icon" aria-hidden="true">
+
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/>
+            </svg>
+
+          </span>
+
+          <span class="link-card-label">
+            X
+          </span>
+
         </span>
-        <span class="link-card-arrow">&#8599;</span>
+
+        <span class="link-card-arrow">
+          &#8599;
+        </span>
+
       </div>
-      <p class="link-card-value">@theralfox</p>
-      <span class="link-card-badge">follow</span>
+
+      <p class="link-card-value">
+        @theralfox
+      </p>
+
+      <span class="link-card-badge">
+        follow
+      </span>
+
     </a>
 
-    <a class="link-card" href="https://t.me/ralfox" target="_blank" rel="noopener noreferrer">
+
+    <!-- TELEGRAM -->
+    <a
+      class="link-card"
+      href="https://t.me/ralfox"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
       <div class="link-card-top">
+
         <span class="link-card-id">
-          <span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
-          <span class="link-card-label">Telegram</span>
+
+          <span class="link-icon" aria-hidden="true">
+
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+
+          </span>
+
+          <span class="link-card-label">
+            Telegram
+          </span>
+
         </span>
-        <span class="link-card-arrow">&#8599;</span>
+
+        <span class="link-card-arrow">
+          &#8599;
+        </span>
+
       </div>
-      <p class="link-card-value">t.me/ralfox</p>
-      <span class="link-card-badge">join</span>
+
+      <p class="link-card-value">
+        t.me/ralfox
+      </p>
+
+      <span class="link-card-badge">
+        join
+      </span>
+
     </a>
 
+
+    <!-- DEXSCREENER -->
     <div class="link-card is-disabled">
+
       <div class="link-card-top">
+
         <span class="link-card-id">
-          <img src="assets/icons/dexscreener.png" alt="" class="link-icon link-icon-img">
-          <span class="link-card-label">Dexscreener</span>
+
+          <img
+            src="assets/icons/dexscreener.png"
+            alt=""
+            class="link-icon link-icon-img"
+          >
+
+          <span class="link-card-label">
+            Dexscreener
+          </span>
+
         </span>
-        <span class="link-card-arrow">&#8599;</span>
+
+        <span class="link-card-arrow">
+          &#8599;
+        </span>
+
       </div>
-      <p class="link-card-value">Live chart</p>
-      <span class="link-card-badge">coming soon</span>
+
+      <p class="link-card-value">
+        Live chart
+      </p>
+
+      <span class="link-card-badge">
+        coming soon
+      </span>
+
     </div>
 
   </div>
+
 </section>
 
+
+<!-- FOOTER -->
 <footer class="site-footer reveal">
-  <p>RALLY FOX — $RALF</p>
-  <p class="footer-disclaimer">Placeholder disclaimer text. Not financial advice. Replace before launch.</p>
+
+  <p>
+    RALLY FOX — $RALF
+  </p>
+
+  <p class="footer-disclaimer">
+    Placeholder disclaimer text. Not financial advice. Replace before launch.
+  </p>
+
 </footer>
+
 
 </div>
 
 <script src="js/script.js"></script>
+
 </body>
 </html>
