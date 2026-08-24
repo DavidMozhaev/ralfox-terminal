@@ -28,21 +28,39 @@ function initGallery(){
   const grid = document.getElementById('galleryGrid');
   if (!grid) return;
 
-  const PLACEHOLDER_COUNT = 6;
+  const images = [
+  'assets/IMG_5081.PNG',
+  'assets/IMG_5082.PNG',
+  'assets/IMG_5083.PNG',
+  'assets/IMG_5084.PNG',
+  'assets/IMG_5085.PNG',
+  'assets/IMG_5086.PNG'
+];
 
-  for (let i = 1; i <= PLACEHOLDER_COUNT; i++){
-    const item = document.createElement('div');
-    item.className = 'gallery-item';
-    item.dataset.label = `Image ${i}`;
-    item.innerHTML = `
-      <div class="ph-fill">Placeholder ${i}</div>
-      <div class="ph-overlay">
-        <span class="loupe"></span>
-        <span class="caption">click to enlarge</span>
-      </div>
-    `;
-    grid.appendChild(item);
-  }
+images.forEach((src, index) => {
+  const item = document.createElement('div');
+  item.className = 'gallery-item';
+  item.dataset.label = `Image ${index + 1}`;
+  item.dataset.src = src;
+
+  item.innerHTML = `
+    <div
+      class="ph-fill"
+      style="
+        background-image: url('${src}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      "
+    ></div>
+    <div class="ph-overlay">
+      <span class="loupe"></span>
+      <span class="caption">click to enlarge</span>
+    </div>
+  `;
+
+  grid.appendChild(item);
+});
 }
 
 function initLightbox(){
@@ -53,11 +71,15 @@ function initLightbox(){
   if (!lightbox || !frame || !closeBtn || !grid) return;
 
   grid.addEventListener('click', (e) => {
-    const item = e.target.closest('.gallery-item');
-    if (!item) return;
-    frame.textContent = item.dataset.label || 'Placeholder';
-    lightbox.classList.add('is-open');
-  });
+  const item = e.target.closest('.gallery-item');
+  if (!item) return;
+
+  const src = item.dataset.src;
+  if (!src) return;
+
+  frame.innerHTML = `<img src="${src}" alt="${item.dataset.label || 'Image'}" class="lightbox-image">`;
+  lightbox.classList.add('is-open');
+});
 
   const close = () => lightbox.classList.remove('is-open');
 
@@ -114,4 +136,11 @@ function initParticles(){
     p.style.animationDelay = `-${randomBetween(0, 38)}s`;
     container.appendChild(p);
   }
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+  border-radius: 12px;
 }
