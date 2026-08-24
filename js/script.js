@@ -37,11 +37,12 @@ function initMobileNav() {
    ======================================== */
 
 function initGallery() {
-  const grid = document.getElementById('galleryGrid');
+  const viewport = document.getElementById('galleryViewport');
+  const track = document.getElementById('galleryTrack');
   const prevBtn = document.getElementById('galleryPrev');
   const nextBtn = document.getElementById('galleryNext');
 
-  if (!grid || !prevBtn || !nextBtn) return;
+  if (!viewport || !track || !prevBtn || !nextBtn) return;
 
   const images = [
     'assets/IMG_5081.PNG',
@@ -52,7 +53,8 @@ function initGallery() {
     'assets/IMG_5086.PNG'
   ];
 
-  let currentPage = 0;
+  let index = 0;
+  let itemsPerPage = 3;
 
   function getItemsPerPage() {
     if (window.innerWidth <= 600) {
@@ -66,36 +68,22 @@ function initGallery() {
     return 3;
   }
 
-  function renderGallery() {
-    const itemsPerPage = getItemsPerPage();
-
-    const totalPages = Math.ceil(
-      images.length / itemsPerPage
-    );
-
-    if (currentPage >= totalPages) {
-      currentPage = totalPages - 1;
+  function getGap() {
+    if (window.innerWidth <= 600) {
+      return 10;
     }
 
-    if (currentPage < 0) {
-      currentPage = 0;
+    if (window.innerWidth <= 900) {
+      return 14;
     }
 
-    const start =
-      currentPage * itemsPerPage;
+    return 20;
+  }
 
-    const end =
-      start + itemsPerPage;
+  function buildTrack() {
+    track.innerHTML = '';
 
-    const visibleImages =
-      images.slice(start, end);
-
-    grid.innerHTML = '';
-
-    visibleImages.forEach((src, index) => {
-      const actualIndex =
-        start + index;
-
+    images.forEach((src, i) => {
       const item =
         document.createElement('div');
 
@@ -103,7 +91,7 @@ function initGallery() {
         'gallery-item';
 
       item.dataset.label =
-        `Image ${actualIndex + 1}`;
+        `Image ${i + 1}`;
 
       item.dataset.src =
         src;
@@ -111,7 +99,7 @@ function initGallery() {
       item.innerHTML = `
         <img
           src="${src}"
-          alt="The Hunt ${actualIndex + 1}"
+          alt="The Hunt ${i + 1}"
           class="gallery-image"
           draggable="false"
         >
@@ -124,42 +112,76 @@ function initGallery() {
         </div>
       `;
 
-      grid.appendChild(item);
+      track.appendChild(item);
     });
+  }
 
-    prevBtn.disabled =
-      currentPage === 0;
+  function applyLayoutVars() {
+    itemsPerPage = getItemsPerPage();
 
-    nextBtn.disabled =
-      currentPage >= totalPages - 1;
+    const gap = getGap();
+
+    track.style.setProperty(
+      '--gallery-items',
+      itemsPerPage
+    );
+
+    track.style.setProperty(
+      '--gallery-gap',
+      `${gap}px`
+    );
+  }
+
+  function maxIndex() {
+    return Math.max(
+      0,
+      images.length - itemsPerPage
+    );
+  }
+
+  function updateArrows() {
+    prevBtn.disabled = index <= 0;
+    nextBtn.disabled = index >= maxIndex();
+  }
+
+  function slideTo(newIndex, animate = true) {
+    index = Math.min(
+      Math.max(newIndex, 0),
+      maxIndex()
+    );
+
+    const firstItem = track.children[0];
+
+    if (!firstItem) return;
+
+    const step =
+      firstItem.getBoundingClientRect().width +
+      getGap();
+
+    if (!animate) {
+      track.classList.add('no-transition');
+    }
+
+    track.style.transform =
+      `translateX(-${index * step}px)`;
+
+    if (!animate) {
+      void track.offsetHeight;
+      track.classList.remove('no-transition');
+    }
+
+    updateArrows();
   }
 
 
-  /* NEXT */
+  /* NEXT / PREVIOUS */
 
   nextBtn.addEventListener('click', () => {
-    const itemsPerPage =
-      getItemsPerPage();
-
-    const totalPages =
-      Math.ceil(
-        images.length / itemsPerPage
-      );
-
-    if (currentPage < totalPages - 1) {
-      currentPage++;
-      renderGallery();
-    }
+    slideTo(index + 1);
   });
 
-
-  /* PREVIOUS */
-
   prevBtn.addEventListener('click', () => {
-    if (currentPage > 0) {
-      currentPage--;
-      renderGallery();
-    }
+    slideTo(index - 1);
   });
 
 
@@ -195,7 +217,7 @@ function initGallery() {
   let touchStartX = 0;
   let touchEndX = 0;
 
-  grid.addEventListener(
+  viewport.addEventListener(
     'touchstart',
     (e) => {
       touchStartX =
@@ -206,7 +228,7 @@ function initGallery() {
     }
   );
 
-  grid.addEventListener(
+  viewport.addEventListener(
     'touchend',
     (e) => {
       touchEndX =
@@ -215,7 +237,7 @@ function initGallery() {
       const distance =
         touchEndX - touchStartX;
 
-      if (Math.abs(distance) < 50) {
+      if (Math.abs(distance) < 40) {
         return;
       }
 
@@ -239,13 +261,15 @@ function initGallery() {
     clearTimeout(resizeTimer);
 
     resizeTimer = setTimeout(() => {
-      currentPage = 0;
-      renderGallery();
+      applyLayoutVars();
+      slideTo(0, false);
     }, 150);
   });
 
 
-  renderGallery();
+  buildTrack();
+  applyLayoutVars();
+  slideTo(0, false);
 }
 
 
@@ -264,7 +288,7 @@ function initLightbox() {
     document.getElementById('lightboxClose');
 
   const grid =
-    document.getElementById('galleryGrid');
+    document.getElementById('galleryTrack');
 
   if (
     !lightbox ||

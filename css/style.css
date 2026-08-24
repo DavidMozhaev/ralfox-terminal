@@ -9,8 +9,8 @@
   --line-strong: #2a3a30;
 
   --text: #f5f1ea;
-  --text-dim: #c9beae;
-  --text-faint: #8a7e70;
+  --text-dim: #ffffff;
+  --text-faint: #ffffff;
 
   --orange: #ff7a33;
   --orange-strong: #ffa066;
@@ -535,17 +535,27 @@ button,
   gap: 18px;
 }
 
-.gallery-grid {
+.gallery-viewport {
   flex: 1;
 
   min-width: 0;
 
-  display: grid;
+  overflow: hidden;
+}
 
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+.gallery-track {
+  display: flex;
 
-  gap: 20px;
+  gap: var(--gallery-gap, 20px);
+
+  transition:
+    transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  will-change: transform;
+}
+
+.gallery-track.no-transition {
+  transition: none;
 }
 
 
@@ -556,7 +566,12 @@ button,
 .gallery-item {
   position: relative;
 
-  width: 100%;
+  flex:
+    0 0
+    calc(
+      (100% - (var(--gallery-items, 3) - 1) * var(--gallery-gap, 20px))
+      / var(--gallery-items, 3)
+    );
 
   aspect-ratio: 3 / 2;
 
@@ -718,18 +733,12 @@ button,
   border-radius: 50%;
 
   border:
-    1px solid var(--orange-line);
+    1.5px solid var(--orange-line);
 
   background:
     rgba(253, 250, 245, 0.94);
 
   color: var(--orange);
-
-  font-family: Arial, sans-serif;
-
-  font-size: 40px;
-
-  line-height: 1;
 
   box-shadow:
     0 8px 24px rgba(0, 0, 0, 0.22);
@@ -740,6 +749,15 @@ button,
     color 0.2s ease,
     opacity 0.2s ease,
     border-color 0.2s ease;
+}
+
+.gallery-arrow svg {
+  width: 20px;
+  height: 20px;
+
+  stroke: currentColor;
+
+  overflow: visible;
 }
 
 .gallery-arrow:hover:not(:disabled) {
@@ -1031,7 +1049,7 @@ button,
 }
 
 .link-icon svg path {
-  fill: var(--text-dim);
+  fill: #c9beae;
 
   transition:
     fill 0.2s ease;
@@ -1255,11 +1273,9 @@ button,
     gap: 10px;
   }
 
-  .gallery-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
-    gap: 14px;
+  .gallery-track {
+    --gallery-items: 2;
+    --gallery-gap: 14px;
   }
 
   .gallery-arrow {
@@ -1268,8 +1284,11 @@ button,
 
     flex:
       0 0 42px;
+  }
 
-    font-size: 32px;
+  .gallery-arrow svg {
+    width: 17px;
+    height: 17px;
   }
 
   .card-grid {
@@ -1390,10 +1409,9 @@ button,
     margin-top: 28px;
   }
 
-  .gallery-grid {
-    grid-template-columns: 1fr;
-
-    gap: 0;
+  .gallery-track {
+    --gallery-items: 1;
+    --gallery-gap: 10px;
   }
 
   .gallery-item {
@@ -1408,8 +1426,11 @@ button,
 
     flex:
       0 0 34px;
+  }
 
-    font-size: 27px;
+  .gallery-arrow svg {
+    width: 15px;
+    height: 15px;
   }
 
   .gallery-item

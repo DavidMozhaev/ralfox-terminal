@@ -154,11 +154,15 @@
       id="galleryPrev"
       aria-label="Previous images"
     >
-      &#8249;
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </button>
 
-    <div class="gallery-grid" id="galleryGrid">
-      <!-- Gallery injected by script.js -->
+    <div class="gallery-viewport" id="galleryViewport">
+      <div class="gallery-track" id="galleryTrack">
+        <!-- Gallery injected by script.js -->
+      </div>
     </div>
 
     <button
@@ -166,7 +170,9 @@
       id="galleryNext"
       aria-label="Next images"
     >
-      &#8250;
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </button>
 
   </div>
@@ -331,21 +337,26 @@
     </a>
 
 
-    <!-- DEXSCREENER -->
-    <div class="link-card is-disabled">
+    <!-- RALLY -->
+    <a
+      class="link-card"
+      href="https://www.rallypad.fun/tokens/robinhood/0x1f60e975ec32b51123c8e07cedefe4a5498e8289"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
 
       <div class="link-card-top">
 
         <span class="link-card-id">
 
           <img
-            src="assets/icons/dexscreener.png"
+            src="assets/icons/rally.jpg"
             alt=""
             class="link-icon link-icon-img"
           >
 
           <span class="link-card-label">
-            Dexscreener
+            RALLY
           </span>
 
         </span>
@@ -361,10 +372,10 @@
       </p>
 
       <span class="link-card-badge">
-        coming soon
+        view chart
       </span>
 
-    </div>
+    </a>
 
   </div>
 
